@@ -4,28 +4,14 @@ import { GitFork, Eye } from 'lucide-react';
 interface StatsCardProps {
   forkCount: number;
   watcherCount: number;
-  lastUpdated: string;
   isLoading: boolean;
 }
 
 const StatsCard: React.FC<StatsCardProps> = ({ 
   forkCount, 
   watcherCount, 
-  lastUpdated,
   isLoading
 }) => {
-  // Format the last updated time
-  const formatLastUpdated = (isoString: string): string => {
-    if (!isoString) return 'Never';
-    
-    const date = new Date(isoString);
-    return new Intl.DateTimeFormat('en-US', {
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      hour12: true
-    }).format(date);
-  };
 
   return (
     <div className="bg-white dark:bg-gradient-to-br dark:from-[#19191C] dark:to-[#231A23] rounded-xl shadow-md p-6 border border-gray-100 dark:border-pink-500/20 dark:shadow-pink-900/20 dark:shadow-lg transition-all duration-500 backdrop-blur-sm dark:bg-opacity-80 hover:dark:border-pink-500/40 relative overflow-hidden group">
@@ -58,9 +44,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
         </div>
       </div>
       
-      <div className="mt-4 text-xs text-gray-500 dark:text-pink-300/70 text-right relative z-10">
-        Last updated: {isLoading ? '...' : formatLastUpdated(lastUpdated)}
-      </div>
+      {/* Last updated information moved to StarCounter component */}
     </div>
   );
 };

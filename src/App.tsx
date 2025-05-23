@@ -74,6 +74,7 @@ function App() {
               count={starCount}
               isLoading={isLoading}
               error={error}
+              lastUpdated={lastUpdated}
             />
           </div>
 
@@ -81,7 +82,6 @@ function App() {
             <StatsCard
               forkCount={forkCount}
               watcherCount={watcherCount}
-              lastUpdated={lastUpdated}
               isLoading={isLoading}
             />
 
