@@ -63,17 +63,17 @@ function App() {
 
       <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col items-center mb-8">
+          <div className="flex flex-col items-center mb-4">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800 dark:text-white">
               Watch Appwrite's stars grow in real-time! ✨
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
+            <p className="text-center text-gray-600 dark:text-gray-400 mb-3 max-w-2xl">
               Join us in celebrating Appwrite's journey to the stars! See how
               the community is growing and share in the excitement.
             </p>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-6">
             <StarCounter
               count={starCount}
               isLoading={isLoading}

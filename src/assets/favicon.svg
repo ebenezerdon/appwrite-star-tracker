@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Elegant background with subtle gradient -->
+  <rect width="512" height="512" rx="128" fill="url(#paint0_linear)"/>
+  
+  <!-- Abstract cosmic design - elegant curves representing cosmic data/growth -->
+  <path d="M128 256C128 185.308 185.308 128 256 128C326.692 128 384 185.308 384 256C384 326.692 326.692 384 256 384" 
+        stroke="white" stroke-width="24" stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Elegant data point markers -->
+  <circle cx="256" cy="128" r="16" fill="#FFD1E8"/>
+  <circle cx="384" cy="256" r="16" fill="#FFD1E8"/>
+  <circle cx="256" cy="384" r="16" fill="#FFD1E8"/>
+  
+  <!-- Central elegant element - representing growth and tracking -->
+  <path d="M256 256L384 256" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M256 256L256 128" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M256 256L256 384" stroke="white" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- Central elegant dot -->
+  <circle cx="256" cy="256" r="32" fill="white"/>
+  <circle cx="256" cy="256" r="16" fill="#FF458A"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="176" cy="176" r="8" fill="#FFD1E8" opacity="0.8"/>
+  <circle cx="336" cy="336" r="8" fill="#FFD1E8" opacity="0.8"/>
+  <circle cx="336" cy="176" r="8" fill="#FFD1E8" opacity="0.8"/>
+  <circle cx="176" cy="336" r="8" fill="#FFD1E8" opacity="0.8"/>
+  
+  <!-- Subtle glow effect -->
+  <circle cx="256" cy="256" r="96" fill="url(#paint1_radial)" opacity="0.15"/>
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF458A"/>
+      <stop offset="1" stop-color="#8A1A4A"/>
+    </linearGradient>
+    <radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" 
+                    gradientTransform="translate(256 256) rotate(90) scale(96)">
+      <stop offset="0" stop-color="white"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
