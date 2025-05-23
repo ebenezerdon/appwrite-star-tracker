@@ -41,7 +41,7 @@ function App() {
     useGitHubStats({
       owner: 'appwrite',
       repo: 'appwrite',
-      refreshInterval: 30000, // Refresh every 30 seconds
+      refreshInterval: 20000, // Refresh every 20 seconds
     })
 
   // Update document title with star count
