@@ -19,7 +19,7 @@ interface UseGitHubStatsOptions {
 export const useGitHubStats = ({
   owner,
   repo,
-  refreshInterval = 10000,
+  refreshInterval = 20000,
 }: UseGitHubStatsOptions): GitHubRepoStats => {
   const [stats, setStats] = useState<GitHubRepoStats>({
     starCount: 0,
