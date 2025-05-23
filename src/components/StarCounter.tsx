@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Star } from 'lucide-react'
+import { Star, Github } from 'lucide-react'
 import confetti from 'canvas-confetti'
+import { loginWithGitHub } from '../services/appwrite'
 
 interface StarCounterProps {
   count: number
@@ -13,6 +14,19 @@ const StarCounter: React.FC<StarCounterProps> = ({
   isLoading,
   error,
 }) => {
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
+  
+  const handleGitHubLogin = async () => {
+    try {
+      setIsAuthenticating(true);
+      await loginWithGitHub();
+    } catch (error) {
+      console.error('GitHub login error:', error);
+    } finally {
+      // This may not execute if the page redirects
+      setIsAuthenticating(false);
+    }
+  };
   const [displayedCount, setDisplayedCount] = useState<number>(0)
   const prevCountRef = useRef<number>(0)
   const digitsRef = useRef<HTMLDivElement>(null)
@@ -112,8 +126,29 @@ const StarCounter: React.FC<StarCounterProps> = ({
           
           <div className="text-sm text-pink-600 dark:text-pink-200 mb-4 leading-relaxed text-center relative z-10" dangerouslySetInnerHTML={{ __html: error }} />
           
-          <div className="text-xs text-pink-500/70 dark:text-pink-300/70 italic text-center relative z-10">
-            The GitHub API has rate limits for unauthenticated requests.
+          {/* Removed duplicate text about rate limits since it's already in the error message */}
+          
+          <div className="flex justify-center relative z-10">
+            <button
+              onClick={handleGitHubLogin}
+              disabled={isAuthenticating}
+              className={`flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white py-2 px-4 rounded-md transition-all duration-300 shadow-md hover:shadow-lg ${isAuthenticating ? 'opacity-70 cursor-not-allowed' : ''}`}
+            >
+              {isAuthenticating ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Connecting...
+                </>
+              ) : (
+                <>
+                  <Github size={18} />
+                  Sign in with GitHub
+                </>
+              )}
+            </button>
           </div>
         </div>
       </div>
