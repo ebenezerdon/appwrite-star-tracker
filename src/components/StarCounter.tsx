@@ -7,13 +7,27 @@ interface StarCounterProps {
   count: number
   isLoading: boolean
   error: string | null
+  lastUpdated?: string
 }
 
 const StarCounter: React.FC<StarCounterProps> = ({
   count,
   isLoading,
   error,
+  lastUpdated,
 }) => {
+  // Format the last updated time
+  const formatLastUpdated = (isoString: string): string => {
+    if (!isoString) return 'Never'
+    
+    const date = new Date(isoString)
+    return new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: true
+    }).format(date)
+  }
   const [isAuthenticating, setIsAuthenticating] = useState(false)
 
   const handleGitHubLogin = async () => {
@@ -243,7 +257,12 @@ const StarCounter: React.FC<StarCounterProps> = ({
                 <span>Fetching latest count...</span>
               </div>
             ) : (
-              <span>appwrite/appwrite</span>
+              <div className="flex flex-col items-center">
+                <span>appwrite/appwrite</span>
+                <div className="text-xs text-pink-500/70 dark:text-pink-300/70 mt-2">
+                  Last updated: {formatLastUpdated(lastUpdated || '')}
+                </div>
+              </div>
             )}
           </div>
         </div>
