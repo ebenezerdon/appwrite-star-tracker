@@ -14,19 +14,19 @@ const StarCounter: React.FC<StarCounterProps> = ({
   isLoading,
   error,
 }) => {
-  const [isAuthenticating, setIsAuthenticating] = useState(false);
-  
+  const [isAuthenticating, setIsAuthenticating] = useState(false)
+
   const handleGitHubLogin = async () => {
     try {
-      setIsAuthenticating(true);
-      await loginWithGitHub();
+      setIsAuthenticating(true)
+      await loginWithGitHub()
     } catch (error) {
-      console.error('GitHub login error:', error);
+      console.error('GitHub login error:', error)
     } finally {
       // This may not execute if the page redirects
-      setIsAuthenticating(false);
+      setIsAuthenticating(false)
     }
-  };
+  }
   const [displayedCount, setDisplayedCount] = useState<number>(0)
   const prevCountRef = useRef<number>(0)
   const digitsRef = useRef<HTMLDivElement>(null)
@@ -116,29 +116,63 @@ const StarCounter: React.FC<StarCounterProps> = ({
           {/* Decorative background elements */}
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-pink-500/10 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-pink-500/10 rounded-full blur-3xl"></div>
-          
+
           <div className="flex items-center justify-center mb-4 relative z-10">
-            <svg className="w-6 h-6 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg
+              className="w-6 h-6 text-pink-400 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
             </svg>
-            <h2 className="text-xl font-medium text-pink-700 dark:text-pink-300">Just a moment</h2>
+            <h2 className="text-xl font-medium text-pink-700 dark:text-pink-300">
+              Just a moment
+            </h2>
           </div>
-          
-          <div className="text-sm text-pink-600 dark:text-pink-200 mb-4 leading-relaxed text-center relative z-10" dangerouslySetInnerHTML={{ __html: error }} />
-          
+
+          <div
+            className="text-sm text-pink-600 dark:text-pink-200 mb-4 leading-relaxed text-center relative z-10"
+            dangerouslySetInnerHTML={{ __html: error }}
+          />
+
           {/* Removed duplicate text about rate limits since it's already in the error message */}
-          
+
           <div className="flex justify-center relative z-10">
             <button
               onClick={handleGitHubLogin}
               disabled={isAuthenticating}
-              className={`flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white py-2 px-4 rounded-md transition-all duration-300 shadow-md hover:shadow-lg ${isAuthenticating ? 'opacity-70 cursor-not-allowed' : ''}`}
+              className={`flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white py-2 px-4 rounded-md transition-all duration-300 shadow-md hover:shadow-lg ${
+                isAuthenticating ? 'opacity-70 cursor-not-allowed' : ''
+              }`}
             >
               {isAuthenticating ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Connecting...
                 </>
@@ -184,7 +218,7 @@ const StarCounter: React.FC<StarCounterProps> = ({
           <div className="flex items-center justify-center mb-4 relative z-10">
             <Star className="w-8 h-8 text-yellow-500 mr-2 animate-pulse" />
             <h2 className="text-2xl font-semibold text-pink-900 dark:text-pink-100">
-              GitHub Stars
+              GitHub stars
             </h2>
           </div>
 
