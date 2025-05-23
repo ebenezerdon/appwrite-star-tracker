@@ -64,9 +64,13 @@ export const useGitHubStats = ({
             resetMessage = ` Rate limit will reset at ${resetTimeString}.`
           }
 
-          throw new Error(
-            `Looks like you've exceeded GitHub's hourly request limit.${resetMessage} <br/><br/>Sign in with GitHub below to get a higher rate limit and continue using the app.`,
-          )
+          // Different message based on authentication status
+          const isAuthenticated = session && 'githubToken' in session
+          const errorMessage = isAuthenticated
+            ? `Looks like you've exceeded GitHub's hourly request limit.${resetMessage}`
+            : `Looks like you've exceeded GitHub's hourly request limit.${resetMessage} <br/><br/>Sign in with GitHub below to get a higher rate limit and continue using the app.`
+
+          throw new Error(errorMessage)
         }
 
         if (!response.ok) {
