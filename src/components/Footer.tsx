@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Footer: React.FC = () => {
   return (
@@ -9,39 +9,30 @@ const Footer: React.FC = () => {
         <div className="text-sm text-gray-600 dark:text-pink-200/80 mb-2 sm:mb-0">
           © {new Date().getFullYear()} Appwrite Star Tracker
         </div>
-        
+
         <div className="flex space-x-4">
-          <a 
-            href="https://appwrite.io" 
-            target="_blank" 
+          <a
+            href="https://appwrite.io"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 transition-colors relative group"
           >
             <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-pink-500/50 group-hover:w-full transition-all duration-300"></span>
             Appwrite Website
           </a>
-          <a 
-            href="https://github.com/appwrite/appwrite" 
-            target="_blank" 
+          <a
+            href="https://github.com/ebenezerdon/appwrite-star-tracker"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 transition-colors relative group"
           >
             <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-pink-500/50 group-hover:w-full transition-all duration-300"></span>
             GitHub Repository
           </a>
-          <a 
-            href="https://twitter.com/appwrite" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-sm text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 transition-colors relative group"
-          >
-            <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-pink-500/50 group-hover:w-full transition-all duration-300"></span>
-            Twitter
-          </a>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
