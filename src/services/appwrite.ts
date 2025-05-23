@@ -2,8 +2,8 @@ import { Client, Account } from 'appwrite'
 
 // Initialize Appwrite client
 const client = new Client()
-  .setEndpoint('https://fra.dcloud.appwrite.io/v1') // Your Appwrite endpoint
-  .setProject('appwrite-star-tracker') // Your Appwrite project ID
+  .setEndpoint('https://fra.cloud.appwrite.io/v1')
+  .setProject('appwrite-star-tracker')
 
 // Initialize Appwrite account
 const account = new Account(client)
