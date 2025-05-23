@@ -19,7 +19,7 @@ interface UseGitHubStatsOptions {
 export const useGitHubStats = ({
   owner,
   repo,
-  refreshInterval = 60000,
+  refreshInterval = 10000,
 }: UseGitHubStatsOptions): GitHubRepoStats => {
   const [stats, setStats] = useState<GitHubRepoStats>({
     starCount: 0,
@@ -35,20 +35,20 @@ export const useGitHubStats = ({
       try {
         // Try to get user session from Appwrite
         const session = await getCurrentSession()
-        
+
         // Set up headers with authentication if available
         const headers: HeadersInit = {
-          'Accept': 'application/vnd.github.v3+json'
+          Accept: 'application/vnd.github.v3+json',
         }
-        
+
         // If user is authenticated and has a GitHub token, use it
         if (session && 'githubToken' in session) {
           headers['Authorization'] = `Bearer ${session.githubToken}`
         }
-        
+
         const response = await fetch(
           `https://api.github.com/repos/${owner}/${repo}`,
-          { headers }
+          { headers },
         )
 
         // Check for rate limit errors (403 or 429 status codes)
