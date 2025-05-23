@@ -8,16 +8,18 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
   return (
-    <header className="w-full py-4 px-6 flex justify-between items-center bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+    <header className="w-full py-4 px-6 flex justify-between items-center bg-white dark:bg-gradient-to-r dark:from-[#19191C] dark:to-[#231A23] border-b border-gray-200 dark:border-pink-500/30 relative backdrop-blur-sm dark:bg-opacity-90 dark:shadow-lg dark:shadow-pink-900/10">
+      {/* Decorative header glow */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent blur-sm"></div>
       <div className="flex items-center">
-        <Github className="h-6 w-6 text-indigo-600 dark:text-indigo-400 mr-2" />
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Appwrite Star Tracker</h1>
+        <Github className="h-6 w-6 text-pink-600 dark:text-pink-400 mr-2" />
+        <h1 className="text-xl font-semibold text-gray-800 dark:text-pink-100 relative" style={{ textShadow: '0 0 10px rgba(236, 72, 153, 0.2)' }}>Appwrite Star Tracker</h1>
       </div>
       
       <div className="flex items-center">
         <button 
           onClick={toggleTheme}
-          className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+          className="p-2 rounded-full bg-gray-100 dark:bg-[#2A1A22] text-gray-700 dark:text-pink-200 hover:bg-gray-200 dark:hover:bg-[#3A1A2A] transition-colors duration-200"
           aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
         >
           {isDarkMode ? (
@@ -35,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           href="https://github.com/appwrite/appwrite" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="ml-4 px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200 flex items-center text-sm"
+          className="ml-4 px-4 py-2 rounded-md bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:from-pink-500 hover:to-rose-500 transition-all duration-300 flex items-center text-sm shadow-md shadow-pink-900/20 hover:shadow-pink-900/30 relative overflow-hidden group"
         >
           <Github className="h-4 w-4 mr-2" />
           View on GitHub
