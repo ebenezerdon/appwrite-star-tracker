@@ -39,7 +39,7 @@ const ShareButton: React.FC<ShareButtonProps> = ({ starCount }) => {
     <div className="relative">
       <button
         onClick={handleShare}
-        className="flex items-center justify-center px-4 py-2 bg-pink-100 dark:bg-gradient-to-r dark:from-pink-900/80 dark:to-rose-900/80 text-pink-700 dark:text-pink-200 rounded-lg hover:bg-pink-200 dark:hover:from-pink-800/80 dark:hover:to-rose-800/80 transition-all duration-300 shadow-sm dark:shadow-pink-900/30 hover:shadow-md dark:hover:shadow-pink-900/40"
+        className="flex items-center justify-center px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
       >
         <Share2 className="w-4 h-4 mr-2" />
         Share
