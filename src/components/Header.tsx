@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           className="ml-4 px-4 py-2 rounded-md bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:from-pink-500 hover:to-rose-500 transition-all duration-300 flex items-center text-sm shadow-md shadow-pink-900/20 hover:shadow-pink-900/30 relative overflow-hidden group"
         >
           <Github className="h-4 w-4 mr-2" />
-          View on GitHub
+          Star on GitHub
         </a>
       </div>
     </header>
