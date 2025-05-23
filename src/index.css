@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-800 dark:text-gray-200;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-tight;
+  }
+}
+
+/* Custom animations */
+@keyframes countUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-count-up {
+  animation: countUp 0.5s ease-out forwards;
+}
+
+/* Flip animation for digits */
+.digit-flip {
+  perspective: 1000px;
+  display: inline-block;
+}
+
+.digit-flip .front,
+.digit-flip .back {
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.digit-flip .back {
+  transform: rotateX(180deg);
+}
+
+.digit-flip.flipped .front {
+  transform: rotateX(180deg);
+}
+
+.digit-flip.flipped .back {
+  transform: rotateX(0deg);
+}
