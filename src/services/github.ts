@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { getCurrentSession } from './appwrite'
 
 interface GitHubRepoStats {
   starCount: number
@@ -32,8 +33,22 @@ export const useGitHubStats = ({
   useEffect(() => {
     const fetchRepoStats = async () => {
       try {
+        // Try to get user session from Appwrite
+        const session = await getCurrentSession()
+        
+        // Set up headers with authentication if available
+        const headers: HeadersInit = {
+          'Accept': 'application/vnd.github.v3+json'
+        }
+        
+        // If user is authenticated and has a GitHub token, use it
+        if (session && 'githubToken' in session) {
+          headers['Authorization'] = `Bearer ${session.githubToken}`
+        }
+        
         const response = await fetch(
           `https://api.github.com/repos/${owner}/${repo}`,
+          { headers }
         )
 
         // Check for rate limit errors (403 or 429 status codes)
@@ -50,7 +65,7 @@ export const useGitHubStats = ({
           }
 
           throw new Error(
-            `Looks like you've exceeded GitHub's hourly request limit.${resetMessage} <br/><br/>Take a short break and check back soon!`,
+            `Looks like you've exceeded GitHub's hourly request limit.${resetMessage} <br/><br/>Sign in with GitHub below to get a higher rate limit and continue using the app.`,
           )
         }
 
