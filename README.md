@@ -98,6 +98,7 @@ This project is licensed under the GNU General Public License v3.0 - see the LIC
 - [Appwrite](https://appwrite.io) for the awesome open-source backend
 - [GitHub API](https://docs.github.com/en/rest) for providing repository data
 - All the amazing contributors to the Appwrite project
+- My humble self 🤗 [Ebenezer Don](https://github.com/ebenezerdon)
 
 ---
 
