@@ -2,6 +2,8 @@
 
 A real-time GitHub star tracker for the Appwrite repository, built with React, TypeScript, and Appwrite authentication.
 
+Live demo: [https://appwrite.ebenezerdon.com](https://appwrite.ebenezerdon.com)
+
 ![Appwrite Star Tracker](https://appwrite.ebenezerdon.com/og-image.png)
 
 ## 🌟 Features
