@@ -49,50 +49,79 @@ const StarCounter: React.FC<StarCounterProps> = ({
   const prevCountRef = useRef<number>(0)
   const digitsRef = useRef<HTMLDivElement>(null)
 
-  const celebrateMilestone = (count: number) => {
-    const milestones = [50000, 60000, 70000, 80000, 90000, 100000]
-    if (milestones.includes(count)) {
-      // Create a massive celebration
-      const duration = 15 * 1000
-      const animationEnd = Date.now() + duration
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
+  const milestones = [50000, 60000, 70000, 80000, 90000, 100000]
 
-      const randomInRange = (min: number, max: number) => {
-        return Math.random() * (max - min) + min
+  const isWithin10CountsAfterMilestone = (count: number) => {
+    for (const milestone of milestones) {
+      if (count > milestone && count <= milestone + 10) {
+        return milestone;
+      }
+    }
+    return null;
+  };
+
+  const createFireworks = (intensity = 'high') => {
+    const duration = 15 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    const randomInRange = (min: number, max: number) => {
+      return Math.random() * (max - min) + min;
+    };
+
+    const interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
       }
 
-      const interval: any = setInterval(() => {
-        const timeLeft = animationEnd - Date.now()
+      // Adjust particle count based on intensity
+      const particleCount = intensity === 'high' ? 50 * (timeLeft / duration) : 30 * (timeLeft / duration);
 
-        if (timeLeft <= 0) {
-          return clearInterval(interval)
-        }
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      });
+    }, 250);
+  };
 
-        const particleCount = 50 * (timeLeft / duration)
-
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        })
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        })
-      }, 250)
-    } else if (count > prevCountRef.current) {
-      // Small celebration for any increase
+  const celebrateMilestone = (count: number) => {
+    // Check if we hit a milestone exactly
+    if (milestones.includes(count)) {
+      createFireworks('high');
+    } 
+    // Check if we're within 10 counts after a milestone
+    else if (isWithin10CountsAfterMilestone(count)) {
+      createFireworks('medium');
+    } 
+    // Small celebration for any increase
+    else if (count > prevCountRef.current) {
       confetti({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
-      })
+      });
     }
   }
 
   useEffect(() => {
     if (count === 0 || isLoading) return
+    
+    // Check if we're within 10 counts after a milestone on page load
+    if (prevCountRef.current === 0) {
+      const milestone = isWithin10CountsAfterMilestone(count);
+      if (milestone) {
+        // We're within 10 counts after a milestone, show fireworks
+        createFireworks('medium');
+      }
+    }
 
     // Store previous count
     const start = prevCountRef.current
