@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react'
 import BackgroundPattern from './components/BackgroundPattern'
-import { useGitHubStats } from './services/github'
-import StarCounter from './components/StarCounter'
 import Header from './components/Header'
-import Footer from './components/Footer'
+import StarCounter from './components/StarCounter'
 import StatsCard from './components/StatsCard'
+import ContributorsList from './components/ContributorsList'
+import LatestRelease from './components/LatestRelease'
+import RecentPullRequests from './components/RecentPullRequests'
+import Footer from './components/Footer'
 import ShareButton from './components/ShareButton'
+import { useGitHubStats } from './services/github'
+import { loginWithGitHub } from './services/appwrite'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -75,6 +79,7 @@ function App() {
               isLoading={isLoading}
               error={error}
               lastUpdated={lastUpdated}
+              onLogin={loginWithGitHub}
             />
           </div>
 
@@ -130,6 +135,25 @@ function App() {
                   Learn more
                 </a>
               </div>
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-pink-100 mb-6 text-center">
+            Repository Insights
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6 mb-8">
+            <div className="bg-white dark:bg-[#261A22] rounded-lg shadow-lg overflow-hidden">
+              <LatestRelease owner="appwrite" repo="appwrite" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-white dark:bg-[#261A22] rounded-lg shadow-lg overflow-hidden">
+              <ContributorsList owner="appwrite" repo="appwrite" />
+            </div>
+            <div className="bg-white dark:bg-[#261A22] rounded-lg shadow-lg overflow-hidden">
+              <RecentPullRequests owner="appwrite" repo="appwrite" />
             </div>
           </div>
         </div>

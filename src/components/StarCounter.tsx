@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Star, Github } from 'lucide-react'
 import confetti from 'canvas-confetti'
-import { loginWithGitHub } from '../services/appwrite'
+// onLogin prop is used instead of direct import
 
 interface StarCounterProps {
   count: number
   isLoading: boolean
   error: string | null
   lastUpdated?: string
+  onLogin?: () => Promise<void>
 }
 
 const StarCounter: React.FC<StarCounterProps> = ({
@@ -15,6 +16,7 @@ const StarCounter: React.FC<StarCounterProps> = ({
   isLoading,
   error,
   lastUpdated,
+  onLogin,
 }) => {
   // Format the last updated time
   const formatLastUpdated = (isoString: string): string => {
@@ -33,7 +35,9 @@ const StarCounter: React.FC<StarCounterProps> = ({
   const handleGitHubLogin = async () => {
     try {
       setIsAuthenticating(true)
-      await loginWithGitHub()
+      if (onLogin) {
+        await onLogin()
+      }
     } catch (error) {
       console.error('GitHub login error:', error)
     } finally {
