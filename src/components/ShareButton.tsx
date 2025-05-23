@@ -8,7 +8,7 @@ interface ShareButtonProps {
 const ShareButton: React.FC<ShareButtonProps> = ({ starCount }) => {
   const [showTooltip, setShowTooltip] = useState(false)
 
-  const shareText = `Appwrite just reached ${starCount.toLocaleString()} stars on GitHub! Check it out: https://github.com/appwrite/appwrite`
+  const shareText = `Appwrite just reached ${starCount.toLocaleString()} stars on GitHub! Check it out: https://appwrite.ebenezerdon.com`
 
   const handleShare = async () => {
     // Check if the Web Share API is available
