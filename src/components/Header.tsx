@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent blur-sm"></div>
       <div className="flex items-center">
         <Github className="h-6 w-6 text-pink-600 dark:text-pink-400 mr-2" />
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-pink-100 relative" style={{ textShadow: '0 0 10px rgba(236, 72, 153, 0.2)' }}>Appwrite Star Tracker</h1>
+        <h1 className="text-xl font-semibold text-gray-800 dark:text-pink-100 relative" style={{ textShadow: '0 0 10px rgba(236, 72, 153, 0.2)' }}>✨ Appwrite Star Gazer</h1>
       </div>
       
       <div className="flex items-center">
