@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
   return (
-    <header className="w-full py-4 px-6 flex justify-between items-center bg-white dark:bg-gradient-to-r dark:from-[#19191C] dark:to-[#231A23] border-b border-gray-200 dark:border-pink-500/30 relative backdrop-blur-sm dark:bg-opacity-90 dark:shadow-lg dark:shadow-pink-900/10">
+    <header className="w-full py-4 px-4 sm:px-6 flex justify-between items-center bg-white dark:bg-gradient-to-r dark:from-[#19191C] dark:to-[#231A23] border-b border-gray-200 dark:border-pink-500/30 relative backdrop-blur-sm dark:bg-opacity-90 dark:shadow-lg dark:shadow-pink-900/10">
       {/* Decorative header glow */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent blur-sm"></div>
       <div className="flex items-center">
@@ -17,7 +17,9 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           className="text-xl font-semibold text-gray-800 dark:text-pink-100 relative"
           style={{ textShadow: '0 0 10px rgba(236, 72, 153, 0.2)' }}
         >
-          ✨ Appwrite star gazer
+          <span className="hidden sm:inline">✨ Appwrite </span>
+          <span className="sm:hidden">✨ </span>
+          <span>Star gazer</span>
         </h1>
       </div>
 
@@ -66,10 +68,11 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           href="https://github.com/appwrite/appwrite"
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-4 px-4 py-2 rounded-md bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:from-pink-500 hover:to-rose-500 transition-all duration-300 flex items-center text-sm shadow-md shadow-pink-900/20 hover:shadow-pink-900/30 relative overflow-hidden group"
+          className="ml-2 sm:ml-4 px-3 sm:px-4 py-2 rounded-md bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:from-pink-500 hover:to-rose-500 transition-all duration-300 flex items-center text-sm shadow-md shadow-pink-900/20 hover:shadow-pink-900/30 relative overflow-hidden group whitespace-nowrap"
         >
           <Github className="h-4 w-4 mr-2" />
-          View on GitHub
+          <span className="hidden sm:inline">View on GitHub</span>
+          <span className="sm:hidden">GitHub</span>
         </a>
       </div>
     </header>
